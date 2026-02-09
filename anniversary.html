@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Years Together ♡</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF5F0;
+            --rose: #FFB5C5;
+            --deep-rose: #E88BA8;
+            --burgundy: #8B4367;
+            --gold: #D4AF37;
+            --shadow: rgba(139, 67, 103, 0.15);
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #FFE8E8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 2rem 0;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 181, 197, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(212, 175, 55, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(30px, -30px) rotate(5deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .intro-screen {
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 8vw, 4rem);
+            color: var(--burgundy);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px var(--shadow);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+
+        .heart {
+            display: inline-block;
+            color: var(--deep-rose);
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin: 0 0.5rem;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+        }
+
+        .body-text {
+            font-size: 1.5rem;
+            color: var(--burgundy);
+            margin: 3rem 0 2rem;
+            font-weight: 400;
+            opacity: 0;
+            animation: slideIn 1s ease-out 0.5s forwards;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: slideIn 1s ease-out 1s forwards;
+        }
+
+        button {
+            padding: 1rem 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            border: 2px solid var(--burgundy);
+            background: white;
+            color: var(--burgundy);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 4px 4px 15px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transition: left 0.5s;
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 20px var(--shadow);
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+            color: white;
+            border: none;
+            font-weight: 600;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        #yesBtn:hover {
+            background: linear-gradient(135deg, var(--deep-rose), var(--burgundy));
+        }
+
+        .message {
+            margin-top: 2rem;
+            font-size: 1.3rem;
+            color: var(--burgundy);
+            font-style: italic;
+            min-height: 2rem;
+            animation: messageAppear 0.5s ease-out;
+        }
+
+        @keyframes messageAppear {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .secret-content {
+            display: none;
+            animation: fadeIn 1s ease-out;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px var(--shadow);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .secret-content.show {
+            display: block;
+        }
+
+        .secret-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--burgundy);
+            margin-bottom: 1.5rem;
+        }
+
+        .secret-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--burgundy);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Custom scrollbar for webkit browsers */
+        .secret-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .secret-content::-webkit-scrollbar-track {
+            background: rgba(255, 181, 197, 0.2);
+            border-radius: 10px;
+        }
+
+        .secret-content::-webkit-scrollbar-thumb {
+            background: var(--deep-rose);
+            border-radius: 10px;
+        }
+
+        .secret-content::-webkit-scrollbar-thumb:hover {
+            background: var(--burgundy);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="introScreen" class="intro-screen">
+            <h1>3 YEARS WITH MY PRINCESS <span class="heart">♡</span></h1>
+            
+            <div class="body-text">Open a secret file</div>
+            
+            <div class="button-container">
+                <button id="yesBtn">Yes</button>
+                <button id="noBtn">No (Don't press No, you might regret it)</button>
+            </div>
+            
+            <div id="message" class="message"></div>
+        </div>
+
+        <div id="secretContent" class="secret-content">
+            <h2>3 YEARS ♡</h2>
+            <p>Gabbye my sweet baby. Today is such a big day for me mama. Like genuinely Gabbye other anniversaries were amazing, obviously, but this one means a lot to me because of many reasons Gabbye. But before I get there let me talk bout how far we've come. It still amazes me how improbable it was that our paths crossed on Snapchat three years ago, billions of people in the world, yet somehow we found each other. What started as a simple connection turned into a journey that has carried us farther than I ever imagined. Like seriously Gabbye I'm always so grateful we got to cross paths baby. Never would I have thought a simple "Heyyy" would come this far Gabbye. Thank you so much for texting me, YOU'RE THE GOAT!!!</p>
+
+            <p>2023 and 2024; I feel like they were our fresh to love stage. They gave us a glimpse of how strong this relationship could become. The way we got along fast and how we gave each other the comfort to get to know one another made us feel like this relationship can really go somewhere. Then after a couple of months I decided to make a very stupid decision and I almost lost you. That decision truly made me understand that you really became the pilar in my life Gabbye…you made me need you gabbye. You became a necessity in my life. And one day out of the blue (before you removed me which is even more crazier), I decided to let you know that I haven't felt full ever since that day. I got to explain myself to you about how you have a place in my heart no one could possibly hold.</p>
+
+            <p>Late 2024 and 2025 were the real turning point for us because like don't get me wrong we had lots of ups and downs even before we got here, but we faced more things yezane. These past few years really showed someone can change if they really wanted to. Sometimes when I sit back and think, all I can think about is how I've really come. Not just as a boyfriend, but as a person Gabbye. You made me change in ways I never thought was possible. You made me wanna change Gabbye. Now instead of telling you our life story again, let me get to the real deal and explain why I today is so special to me.</p>
+
+            <p>Gabbye today as we mark our 3rd year anniversary, I want you to think about all the choices we've made, all the forgiving that was in play, all the hard times that we've faced, all the bumpy roads we've gone through, but through all of this, how we've conquered and prevailed to go through all these problems and how we let love fix all our problems. Gabbye you showed me the meaning of what loving someone really is. I learned how to love after you came in my life. I understood the value love has after you came in my life. I got to understand what caring for someone really is after you came into my life. But mots of all Gabbye, I got to see love after you came into my life. You became the embodiment of love ever since you've made your way into my life.</p>
+
+            <p>Gabbye every time I think about how far we've really come it always makes me so emotional because of the memories of how heavy my heart used to feel when we were on our bad stages and how we got to fix them. Although we had these tough times we always found way to fight back and do better every single time Gabbye. As we celebrate us today, remind yourself that you have a boyfriend that loves you so deeply and passionately. A boyfriend that is willing to devote his life to you. And most importantly, a boy that loves you UNEXPLAINABLY.</p>
+
+            <p>Ever since you've become a part of my life you've only made me become better. You brought out the better version of me. Mama as a mother, she helped me grow physically, but you as my soul mate, you made me grow to become the person I am today. And let me tell you, that's a really big change Gabbye. It really is. Every day I wake up I'm so lucky to get to choose you baby. I choose to give you all my love Gabbye. I choose to care for you gabbye. I choose to compliment you Gabbye. I choose to compliment you Gabbye. I choose to express my love for you Gabbye. But most importantly, I chose you to be my forever and that you get my all Gabbye. I'm beyond grateful for you Gabbye. I'm grateful to choose you everyday Gabbye. You and ONLY YOU. My forever.</p>
+
+            <p>Gabbye now for my last statements I wanna say a few things. I know I'm not a perfect man, as a matter of fact, I'm so far from that. I've made so many mistakes in the course of my life. So many stupid decisions. So many regretful actions. But through all of that, you still chose me. You were patient with me. You saw something in me that no one has ever seen. You got the vision that I will change. You waited everyday to see me become the man that I am right now. The man who loves his woman unconditionally. The man that truly admires his woman. The man who adores his princess. You chose to love me yene konjo and if our love life had a love story, It would be the best love story because I truly am convinced that you are and will forever be the best thing that has ever happened to me. From a boy who begged God not to wake him up the next day, to a man who thanks God every day for waking him up. You made me love life by your love alone. Your unconditional love. Your motherly care. Your approach towards me. How you listened to me. Gabbye whenever you think of me I want you to remind yourself that I'm the product of your love. I think that's the best way to say this. You're sculpted me to the man I am today. In every aspect.</p>
+
+            <p>Gabbye yene konjo please don't ever forget your worth Gabbye. Not just in my life Gabbye but your worth as a whole. The person you are and the person you're yet to become. I know life isn't the best right now but I see your efforts every day Gabbye. I see the forced smiles Gabbye. I see the acting okay days Gabbye. I see your efforts baby. I'm always super proud of you everyday and I'm genuinely so grateful that I'm with you in this course of your life. This stage will pass Gabbye and we'll look back at it together and see how far you've really come. I notice your efforts every day baby and I appreciate them every day. I appreciate the things you do for me Gabbye, willingly and unwillingly. I am always so grateful that you chose to love me with all my flaws and struggles. I tried to make this as short as possible because If I keep writing it won't end baby. A whole book isn't enough to express what I feel about you. Gabbye I'm not proud of many decisions in my life, but choosing to love you everyday will forever be the best decision I have ever made. Thank you for being my person Gabbye. Always so grateful Gabbye and I'm so excited for every upcoming chapter of us. I love you so much my beautiful princess. Stay amazing baby. I'm beyond blessed to have you in my life. Till death do us part mama! I love you so much!</p>
+
+            <p style="margin-top: 2rem; font-style: italic; text-align: right;">Your favorite person in the whole entire universe,<br>Your Yoyoye<br>"I love you more than yesterday, but less than tomorrow."</p>
+        </div>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+        let yesClickCount = 0;
+        let baseSize = 16; // base font size in pixels
+        
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const message = document.getElementById('message');
+        const introScreen = document.getElementById('introScreen');
+        const secretContent = document.getElementById('secretContent');
+
+        noBtn.addEventListener('click', function() {
+            noClickCount++;
+            
+            // Increase Yes button size
+            const newSize = baseSize * (1 + noClickCount * 0.5);
+            yesBtn.style.fontSize = newSize + 'px';
+            yesBtn.style.padding = (newSize * 0.625) + 'px ' + (newSize * 1.25) + 'px';
+            
+            // Show messages based on click count
+            if (noClickCount === 1) {
+                message.textContent = "Why did you just press No (click again see what happens)";
+                message.style.color = '#8B4367';
+            } else if (noClickCount === 2) {
+                message.textContent = "AGAIN?? You're an OPPP";
+                message.style.color = '#8B4367';
+            } else {
+                message.textContent = "The Yes button is getting HUGE... just click it already! 😤";
+                message.style.color = '#E88BA8';
+            }
+        });
+
+        yesBtn.addEventListener('click', function() {
+            yesClickCount++;
+            
+            if (yesClickCount === 1) {
+                message.textContent = "You don't wanna see what happens when you press No?? Go try it";
+                message.style.color = '#D4AF37';
+            } else if (yesClickCount >= 2) {
+                // Show secret content
+                introScreen.classList.add('hidden');
+                secretContent.classList.add('show');
+            }
+        });
+    </script>
+</body>
+</html>
